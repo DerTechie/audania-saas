@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'marketing.home')->name('marketing.home');
+Route::view('/wie-audania-denkt', 'marketing.journeys')->name('marketing.journeys');

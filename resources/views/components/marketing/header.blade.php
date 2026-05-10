@@ -2,8 +2,8 @@
     $links = [
         ['label' => 'Für Praxen', 'href' => '#top'],
         ['label' => 'So funktioniert es', 'href' => '#how'],
+        ['label' => 'Wie Audania denkt', 'href' => route('marketing.journeys')],
         ['label' => 'Datenschutz', 'href' => '#datenschutz'],
-        ['label' => 'Slot-Sets', 'href' => '#'],
         ['label' => 'Preise', 'href' => '#'],
     ];
 @endphp
