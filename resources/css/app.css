@@ -6,35 +6,39 @@
 @source '../**/*.js';
 
 @import './marketing.css';
+@import './marketing-journeys.css';
 
 /* ============================================================
    AUDANIA — Self-hosted fonts (DSGVO: never Google Fonts CDN).
-   Files served from /public/fonts/.
+   Files in resources/fonts/ so Vite serves them in dev and
+   bundles fingerprinted copies in prod (laravel-vite-plugin
+   sets publicDir:false, so /public/fonts/ is not reachable
+   from the dev server origin).
    ============================================================ */
 @font-face {
     font-family: 'Fraunces Local';
-    src: url('/fonts/Fraunces-VariableFont_SOFT_WONK_opsz_wght.ttf') format('truetype');
+    src: url('../fonts/Fraunces-VariableFont_SOFT_WONK_opsz_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Fraunces Local';
-    src: url('/fonts/Fraunces-Italic-VariableFont_SOFT_WONK_opsz_wght.ttf') format('truetype');
+    src: url('../fonts/Fraunces-Italic-VariableFont_SOFT_WONK_opsz_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: italic;
     font-display: swap;
 }
 @font-face {
     font-family: 'Inter Local';
-    src: url('/fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
+    src: url('../fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Inter Local';
-    src: url('/fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype');
+    src: url('../fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: italic;
     font-display: swap;
