@@ -1,16 +1,17 @@
 @php
+    $home = route('marketing.home');
     $links = [
-        ['label' => 'Für Praxen', 'href' => '#top'],
-        ['label' => 'So funktioniert es', 'href' => '#how'],
+        ['label' => 'Für Praxen', 'href' => $home . '#top'],
+        ['label' => 'So funktioniert es', 'href' => $home . '#how'],
         ['label' => 'Wie Audania denkt', 'href' => route('marketing.journeys')],
-        ['label' => 'Datenschutz', 'href' => '#datenschutz'],
+        ['label' => 'Datenschutz', 'href' => $home . '#datenschutz'],
         ['label' => 'Preise', 'href' => '#'],
     ];
 @endphp
 
 <header class="marketing-header">
     <div class="marketing-header__inner">
-        <a href="#top" class="marketing-header__brand">
+        <a href="{{ $home }}" class="marketing-header__brand">
             <span class="wordmark">Audania</span>
         </a>
 
