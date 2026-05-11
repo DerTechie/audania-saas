@@ -1164,6 +1164,266 @@
     border-color: var(--color-clay-hairline);
 }
 
+/* ---------- Imprint (Impressum) ---------- */
+.imprint-hero {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 96px 40px 56px;
+    border-bottom: 1px solid var(--color-hairline);
+}
+
+.imprint-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: end;
+}
+
+.imprint-hero__eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.imprint-hero__rule {
+    width: 24px;
+    height: 1px;
+    background: var(--color-clay);
+    display: inline-block;
+}
+
+.imprint-hero__title {
+    margin: 0;
+    font-size: 84px;
+    line-height: 1.02;
+    font-variation-settings: 'opsz' 144, 'wght' 460;
+}
+
+.imprint-hero__aside {
+    padding-bottom: 8px;
+}
+
+.imprint-hero__lede {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--color-ink-3);
+    margin: 0;
+    max-width: 520px;
+    font-variation-settings: 'opsz' 36, 'wght' 400;
+    letter-spacing: -0.008em;
+}
+
+.imprint-hero__meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.imprint-hero__meta-item {
+    font-size: 12px;
+    color: var(--color-mute);
+}
+
+.imprint-hero__meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-hairline-strong);
+}
+
+.imprint-body {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px 96px;
+}
+
+.imprint-row {
+    display: grid;
+    grid-template-columns: 1fr 2.4fr;
+    gap: 64px;
+    padding: 48px 0;
+    border-top: 1px solid var(--color-hairline);
+    scroll-margin-top: 96px;
+}
+
+.imprint-row__index {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.imprint-row__num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-mute);
+    letter-spacing: 0.06em;
+}
+
+.imprint-row__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-clay);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.imprint-row__heading {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--color-ink);
+    margin: 0 0 18px;
+    letter-spacing: -0.012em;
+    line-height: 1.18;
+    font-variation-settings: 'opsz' 36;
+    text-wrap: balance;
+}
+
+.imprint-row__content {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--color-graphite);
+}
+
+.imprint-row__address {
+    font-style: normal;
+    margin: 0;
+    line-height: 1.7;
+}
+
+.imprint-row__address strong {
+    color: var(--color-ink);
+    font-weight: 600;
+}
+
+.imprint-row__paragraph {
+    margin: 0 0 8px;
+}
+
+.imprint-row__paragraph--narrow {
+    max-width: 560px;
+    margin: 0 0 18px;
+}
+
+.imprint-row__ust {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--color-ink);
+    letter-spacing: 0.04em;
+}
+
+.imprint-row__footnote {
+    margin-top: 14px;
+    font-size: 13px;
+}
+
+.imprint-row__emph {
+    color: var(--color-ink);
+    font-style: normal;
+    border-bottom: 1px solid var(--color-clay-hairline);
+}
+
+.imprint-row__dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 10px;
+    column-gap: 32px;
+    max-width: 520px;
+}
+
+.imprint-row__dl dt {
+    color: var(--color-mute);
+    font-family: var(--font-mono);
+    font-size: 13px;
+}
+
+.imprint-row__dl dd {
+    margin: 0;
+}
+
+.imprint-dsa-card {
+    background: var(--color-linen);
+    border: 1px solid var(--color-hairline);
+    border-radius: 8px;
+    padding: 20px 22px;
+    max-width: 560px;
+}
+
+.imprint-dsa-card__langs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.imprint-dsa-card__lang {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-graphite);
+    background: var(--color-paper);
+    border: 1px solid var(--color-hairline);
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.imprint-body__rule {
+    border-top: 1px solid var(--color-hairline);
+}
+
+.imprint-note {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 2.4fr;
+    gap: 64px;
+}
+
+.imprint-note__body {
+    margin: 0;
+    max-width: 620px;
+    line-height: 1.6;
+}
+
+@media (max-width: 1080px) {
+    .imprint-hero {
+        padding: 72px 24px 40px;
+    }
+    .imprint-hero__inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        align-items: start;
+    }
+    .imprint-hero__title {
+        font-size: 60px;
+    }
+    .imprint-body {
+        padding: 0 24px 72px;
+    }
+    .imprint-row,
+    .imprint-note {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .imprint-row {
+        padding: 36px 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .imprint-hero__title {
+        font-size: 44px;
+    }
+    .imprint-row__heading {
+        font-size: 22px;
+    }
+}
+
 /* ---------- Footer ---------- */
 .marketing-footer {
     background: var(--color-linen-deep);

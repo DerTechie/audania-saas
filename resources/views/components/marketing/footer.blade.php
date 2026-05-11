@@ -4,6 +4,9 @@
         ['title' => 'Vertrauen',   'links' => ['Datenschutz (DSGVO)', 'AVV abrufen', 'Sub-Auftragsverarbeiter', 'Sicherheit', 'Status']],
         ['title' => 'Unternehmen', 'links' => ['Über Audania', 'Build-in-Public', 'Presse', 'Kontakt', 'Impressum']],
     ];
+    $hrefs = [
+        'Impressum' => route('marketing.impressum'),
+    ];
     $year = date('Y');
 @endphp
 
@@ -15,7 +18,7 @@
                 Strukturierte Anamnese, ehe Sie den Behandlungsraum betreten.
             </p>
             <div class="marketing-footer__meta">
-                <span class="caption">Audania GmbH · Berlin · HRB —</span>
+                <span class="caption">Mike Esser Trading &amp; Consulting · Bonn</span>
                 <span class="caption">Hosting: Hetzner Frankfurt (FRA1)</span>
                 <span class="caption">LLM-Inferenz: Mistral EU · Azure OpenAI Sweden</span>
             </div>
@@ -26,7 +29,7 @@
                 <span class="eyebrow">{{ $col['title'] }}</span>
                 <ul>
                     @foreach ($col['links'] as $link)
-                        <li><a href="#">{{ $link }}</a></li>
+                        <li><a href="{{ $hrefs[$link] ?? '#' }}">{{ $link }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -35,7 +38,7 @@
 
     <div class="marketing-footer__legal">
         <div class="marketing-footer__legal-inner">
-            <span class="legal">© {{ $year }} Audania GmbH. Audania ist kein Medizinprodukt im Sinne der MDR.</span>
+            <span class="legal">© {{ $year }} Mike Esser Trading &amp; Consulting. Audania ist kein Medizinprodukt im Sinne der MDR.</span>
             <span class="legal">audania.de · audania.com · audania.ai</span>
         </div>
     </div>
