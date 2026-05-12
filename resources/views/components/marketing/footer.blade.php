@@ -6,6 +6,7 @@
     ];
     $hrefs = [
         'Sicherheit' => route('marketing.home') . '#vertrauen',
+        'Datenschutz (DSGVO)' => route('marketing.datenschutz'),
         'Impressum' => route('marketing.impressum'),
     ];
     $year = date('Y');
