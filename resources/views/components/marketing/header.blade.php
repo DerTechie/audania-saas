@@ -4,7 +4,7 @@
         ['label' => 'Für Praxen', 'href' => $home . '#top'],
         ['label' => 'So funktioniert es', 'href' => $home . '#how'],
         ['label' => 'Wie Audania denkt', 'href' => route('marketing.journeys')],
-        ['label' => 'Datenschutz', 'href' => $home . '#datenschutz'],
+        ['label' => 'Vertrauen', 'href' => $home . '#vertrauen'],
         ['label' => 'Preise', 'href' => '#'],
     ];
 @endphp

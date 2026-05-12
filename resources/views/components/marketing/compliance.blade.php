@@ -26,7 +26,7 @@
     $count = count($facts);
 @endphp
 
-<section id="datenschutz" class="marketing-compliance" data-screen-label="04 Datenschutz">
+<section id="vertrauen" class="marketing-compliance" data-screen-label="04 Vertrauen">
     <div class="section-head">
         <div>
             <span class="eyebrow">Datenschutz · MDR · AVV</span>

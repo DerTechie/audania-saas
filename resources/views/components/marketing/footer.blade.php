@@ -5,6 +5,7 @@
         ['title' => 'Unternehmen', 'links' => ['Über Audania', 'Build-in-Public', 'Presse', 'Kontakt', 'Impressum']],
     ];
     $hrefs = [
+        'Sicherheit' => route('marketing.home') . '#vertrauen',
         'Impressum' => route('marketing.impressum'),
     ];
     $year = date('Y');
