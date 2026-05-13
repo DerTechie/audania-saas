@@ -5,7 +5,7 @@ Distilled from the parent Audania monorepo's `CLAUDE.md` §4 and §9 decision lo
 ## Framework and language
 
 - **Laravel 13.** Pinned. Boost-detected ecosystem versions in the generated `CLAUDE.md` are authoritative for what is actually installed.
-- **PHP 8.4.** Boost-detected default for Laravel 13. Note: the parent monorepo's root `CLAUDE.md` §4 currently still reads "PHP 8.3" — that is stale. Treat 8.4 as current and flag the drift the next time the root is edited.
+- **PHP 8.4.** Boost-detected default for Laravel 13.
 - **Blade + Livewire** for the Praxis-facing UI. **No Inertia, no React, no Vue in this repo.** Boost ships skills for Inertia React / Vue, but they are deliberately not active here (`boost.json` confirms only `laravel-best-practices`, `pest-testing`, `tailwindcss-development`). Keep it that way — adding an SPA framework defeats the Livewire choice.
 - **Vue 3** lives in the sibling repo `audania-patient-pwa`, not here. If you find yourself reaching for Vue or React in this app, stop — the surface you're working on is probably not in this app.
 

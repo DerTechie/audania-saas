@@ -36,3 +36,6 @@ Thumbs.db
 /boost.json
 /junie/
 /.claude/skills/
+
+# Claude Code local user settings (per-developer permissions, not project state).
+/.claude/settings.local.json

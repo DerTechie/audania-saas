@@ -25,10 +25,11 @@ Audania **collects information**; the doctor decides everything clinical. **No d
 
 This audania-saas repo is its own git repo, but it sits locally inside a parent **Audania monorepo** that holds strategy, brand, compliance, and product specs. This repo is engineering only and intentionally does not import those artefacts. When a question goes beyond engineering — competitive positioning, brand voice, slot schemas, compliance gates — the canonical answers live there:
 
-- `00-strategy/` — market analysis, competitive analysis, ICP, pricing.
+- `00-strategy/` — market analysis, competitive analysis, pricing, ADRs.
 - `10-brand/` — voice, naming rationale, visual identity, design-system specimen, fonts.
 - `20-product/` — UX flows, slot definitions, dialog policies, German patient-facing copy.
 - `40-compliance/` — DSFA, AVV template, sub-processor list, DPAs, pen tests, MDR assessments, incident response.
+- `50-go-to-market/` — ICP, messaging playbook, sales material, design-partner pilots. Relevant here for marketing-page copy (Praxis-Register vocabulary).
 
 The binding project brief is the root `CLAUDE.md` in that monorepo. The hard rules and stack decisions in this repo's `.ai/guidelines/` cite that brief with section and date stamps. **If a rule here and the root brief disagree, the root wins** — flag the drift.
 
