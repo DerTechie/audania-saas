@@ -97,6 +97,31 @@
       "related_project": "2026-05-13-changelog-sync-script"
     },
     {
+      "id": "040da5f",
+      "commit": "040da5f",
+      "date": "2026-05-13",
+      "source": "audania-saas",
+      "category": "code",
+      "type": "changed",
+      "title": "docs(readme): rewrite README for Audania identity",
+      "summary": "Replaced the upstream Laravel default README (Laravel logo, generic framework description, MIT note) with an Audania-specific README that:",
+      "files": [
+        "README.md",
+        "changelog.json"
+      ],
+      "tags": [
+        "readme",
+        "audania-saas",
+        "boost",
+        "documentation",
+        "identity"
+      ],
+      "public": false,
+      "effort_minutes": 12,
+      "effort_source": "tracked",
+      "related_project": "2026-05-13-audania-saas-readme-replaced"
+    },
+    {
       "id": "be7827a",
       "commit": "be7827a",
       "date": "2026-05-12",
