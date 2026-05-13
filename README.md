@@ -1,58 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# audania-saas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The **Audania SaaS shell**: billing, Praxis admin, AVV management, the Praxis-facing UI (admin, billing, AVV, doctor inbox & Befund view), and the B2B marketing pages at `audania.de`. Laravel 13 / PHP 8.4, Blade + Livewire, MySQL 8.x, EU-hosted (Hetzner Cloud FRA / Nuremberg).
 
-## About Laravel
+> Audania is an AI-native, conversational pre-visit medical intake assistant for German Arztpraxen. Patients run it on a waiting-room tablet or — via QR code — their own phone; the doctor receives a structured anamnesis summary before the consultation. Audania **collects information**; the doctor decides everything clinical. **No diagnosis, no triage, no therapy recommendation.** That boundary keeps the product out of MDR Class IIa and is treated as both ethics and moat.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## What this repo owns vs. what it doesn't
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This repo is **only** the SaaS shell + Praxis-facing UI + marketing pages. Sibling repos (planned, currently not yet present under `30-code/`) carry:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- `audania-patient-pwa/` — Vue 3 PWA, patient-facing waiting-room flow (separate constraints: 5-year-old tablet over LTE, TTI < 3 s p95).
+- `audania-dialog/` — Python 3.12 + FastAPI dialog/LLM microservice. **No LLM SDK belongs in this Laravel app**; calls go over HTTP to that service.
+- `audania-infra/` — IaC for Hetzner Cloud / STACKIT / IONOS / OVH FRA.
 
-## Learning Laravel
+Slot definitions (per Beschwerdebild) live in the parent monorepo at `20-product/slot-definitions/` as spec, not code — `audania-dialog/` consumes them.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Where the canonical context lives
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+This repo is its own git repo and does **not** auto-load the parent monorepo's `CLAUDE.md`. The on-repo carrier of the load-bearing rules is `.ai/guidelines/audania-*.md` — Boost-merged into the generated `CLAUDE.md`, `AGENTS.md`, etc. on every `php artisan boost:install` / `boost:update`. Those generated files are git-ignored; **do not edit them — your edits will be overwritten**.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Active guideline files (Stand 2026-05-13):
 
-## Agentic Development
+- `audania-context.md` — what this repo owns vs. sibling repos.
+- `audania-hard-rules.md` — code-level consequences of `CLAUDE.md` §2 (DSGVO/EU-residency, tenant isolation, no patient free-text in logs, …).
+- `audania-stack.md` — Laravel 13 / Livewire / MySQL / Hetzner-FRA decisions + the "no LLM SDK in this repo" boundary.
+- `audania-company.md` — operating-entity / brand split (Mike Esser Trading & Consulting vs. "Audania").
+- `audania-commits.md` — `Changelog-*` commit-trailer convention.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+When you need anything beyond engineering — competitive positioning, brand voice, slot schemas, compliance gates — the canonical answers live in the parent Audania monorepo (`00-strategy/`, `10-brand/`, `20-product/`, `40-compliance/`, `50-go-to-market/`). The root `CLAUDE.md` is the binding project brief; **if a rule here and the root brief disagree, the root wins — flag the drift.**
+
+## Three hard rules worth surfacing here
+
+Distilled from `audania-hard-rules.md`; the full list lives there.
+
+1. **No diagnosis, no triage, no therapy recommendation.** No severity scoring, no urgency badges, no sort-by-urgency in the doctor inbox, no AI-summary prose. Audania records what the patient said; the doctor decides.
+2. **Multi-tenancy is application-layer only.** Every tenant-scoped Eloquent model carries a `BelongsToPraxis` global scope on `praxis_id`. Tests for cross-tenant filtering and audited `withoutGlobalScopes` usage are the **only** enforcement gate (MySQL has no native RLS) — treat a failure or skip as a §2 hard-rule violation, not a flake.
+3. **Pseudonymise at write time, not at aggregation time.** No patient free-text in logs, Sentry breadcrumbs, or queue payloads. Helpers like `toLogArray()` return only IDs + timestamps.
+
+## Marketing pages live in this app
+
+`audania.de` is a Blade route group inside this Laravel app — own layout, no Livewire, same deploy / AVV chain / Hetzner FRA host as the SaaS shell. Re-split triggers (CMS adoption, attack-surface escalation, separate marketing function) are documented in ADR `00-strategy/decisions/2026-05-09-marketing-as-route-group.md` in the parent monorepo.
+
+## Getting started
 
 ```bash
-composer require laravel/boost --dev
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
 
+npm install
+npm run dev
+```
+
+Laravel Boost is required for the AI-tooling workflow (generated CLAUDE.md / AGENTS.md). If you cloned fresh:
+
+```bash
 php artisan boost:install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+This regenerates the agent-context files from the current `.ai/guidelines/` content + Laravel codebase introspection. Run again after editing any guideline file.
 
-## Contributing
+## Changelog & commit convention
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+This repo emits `Changelog-*` trailers in every commit body (`Changelog-Effort`, `Changelog-Public`, `Changelog-Tags`, `Changelog-Related-Project`). A post-commit hook at `.git/hooks/post-commit` calls the parent monorepo's `scripts/changelog.py`, which syncs this repo's `changelog.json` from git log and re-renders the parent's `changelog.html`. The merge-preservation contract: curated fields on existing entries survive every re-run.
 
-## Code of Conduct
+Full convention + worked examples: `.ai/guidelines/audania-commits.md`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+If you cloned fresh and need to re-install the hook (hooks aren't versioned with the repo):
 
-## Security Vulnerabilities
+```bash
+cat > .git/hooks/post-commit <<'EOF'
+#!/bin/sh
+set -e
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+PROJECT_ROOT="$(cd "$REPO_ROOT/../.." && pwd)"
+SCRIPT="$PROJECT_ROOT/scripts/changelog.py"
+[ -f "$SCRIPT" ] || exit 0
+python3 "$SCRIPT" --repo "$REPO_ROOT"
+EOF
+chmod +x .git/hooks/post-commit
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Testing
 
-## License
+```bash
+php artisan test
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Pest is the test runner. The cross-tenant filtering tests in `tests/Feature/MultiTenancy/` (or equivalent) are load-bearing per the hard rule — treat their failure as a security incident, not a flake.
+
+## License & operator
+
+This repo is **proprietary**. Audania is operated by **Mike Esser Trading & Consulting** (Einzelunternehmen). There is no "Audania GmbH". Any code, copy, or document that names a legal counterparty must name the operating entity, not the product brand — see ADR `00-strategy/decisions/2026-05-11-operating-entity.md` in the parent monorepo for where this binds in code (Impressum, AVV, Stripe-EU billing, sub-processor list).
+
+The Laravel framework itself is MIT-licensed; see `vendor/laravel/framework/LICENSE.md`.

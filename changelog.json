@@ -12,6 +12,35 @@
   ],
   "entries": [
     {
+      "id": "9cea1fa",
+      "commit": "9cea1fa",
+      "date": "2026-05-13",
+      "source": "audania-saas",
+      "category": "code",
+      "type": "changed",
+      "title": "chore(ai): land audania-commits.md + minor stack/context fixes",
+      "summary": "The audania-commits.md trailer convention file was authored alongside the 2026-05-13 trailer-automation work (parent monorepo CLAUDE.md §9 / ADR 00-strategy/decisions/2026-05-13-commit-trailer-automation.md) but never staged. This commit lands it so future sessions in audania-saas pick it up via the Boost merge.",
+      "files": [
+        ".ai/guidelines/audania-commits.md",
+        ".ai/guidelines/audania-context.md",
+        ".ai/guidelines/audania-stack.md",
+        ".gitignore",
+        "changelog.json"
+      ],
+      "tags": [
+        "ai",
+        "ai-guidelines",
+        "audania-commits",
+        "php-84",
+        "gtm",
+        "changelog"
+      ],
+      "public": false,
+      "effort_minutes": 10,
+      "effort_source": "tracked",
+      "related_project": "2026-05-13-md-audit-cleanup-pass"
+    },
+    {
       "id": "7da1e70",
       "commit": "7da1e70",
       "date": "2026-05-13",
