@@ -5,7 +5,7 @@
         ['label' => 'So funktioniert es', 'href' => $home . '#how'],
         ['label' => 'Wie Audania denkt', 'href' => route('marketing.journeys')],
         ['label' => 'Vertrauen', 'href' => $home . '#vertrauen'],
-        ['label' => 'Preise', 'href' => '#'],
+        ['label' => 'Preise · folgt', 'href' => null],
     ];
 @endphp
 
@@ -17,7 +17,11 @@
 
         <nav class="marketing-header__nav">
             @foreach ($links as $link)
-                <a href="{{ $link['href'] }}">{{ $link['label'] }}</a>
+                @if ($link['href'])
+                    <a href="{{ $link['href'] }}">{{ $link['label'] }}</a>
+                @else
+                    <span class="is-disabled" aria-disabled="true">{{ $link['label'] }}</span>
+                @endif
             @endforeach
         </nav>
 

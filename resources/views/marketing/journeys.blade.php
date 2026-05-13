@@ -1,5 +1,5 @@
 <x-layouts.marketing
-    title="Audania — Wie Audania denkt · Drei Patientenpfade"
+    title="Audania — Wie Audania denkt"
     description="Animierter Architektur-Walkthrough: Patient → LLM Slot-Fill → Policy. Drei Beispiele auf Deutsch und Türkisch."
 >
     <x-marketing.header />

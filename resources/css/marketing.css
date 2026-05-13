@@ -67,6 +67,14 @@
     color: var(--color-clay-deep);
 }
 
+.marketing-header__nav .is-disabled {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-mute-2);
+    cursor: default;
+}
+
 .marketing-header__actions {
     display: flex;
     gap: 8px;
@@ -2140,6 +2148,13 @@
 
 .marketing-footer__col a:hover {
     color: var(--color-clay-deep);
+}
+
+.marketing-footer__col .is-disabled {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-mute-2);
+    cursor: default;
 }
 
 .marketing-footer__legal {

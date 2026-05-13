@@ -1,6 +1,6 @@
 @props([
-    'title' => 'Audania — Wir hören zu, bevor der Arzt fragt.',
-    'description' => 'Audania ist der KI-native Anamnese-Assistent für deutsche Arztpraxen — datenschutzkonform, gesprächsbasiert, und bewusst kein Medizinprodukt.',
+    'title' => 'Audania — Anamnese, ehe Sie den Patienten aufrufen.',
+    'description' => 'Audania führt das Anamnese-Gespräch mit Ihren Patient:innen vor der Sprechstunde — auf Tablet oder Telefon, in zehn Sprachen. Der Befund liegt vor dem Gespräch in Ihrer Praxissoftware. Bewusst kein Medizinprodukt.',
 ])
 
 <!DOCTYPE html>

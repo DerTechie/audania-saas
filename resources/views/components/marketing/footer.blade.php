@@ -1,13 +1,21 @@
 @php
+    $home = route('marketing.home');
     $columns = [
-        ['title' => 'Produkt',     'links' => ['Für Praxen', 'So funktioniert es', 'Slot-Sets', 'Preise', 'Demo vereinbaren']],
-        ['title' => 'Vertrauen',   'links' => ['Datenschutz (DSGVO)', 'AVV abrufen', 'Sub-Auftragsverarbeiter', 'Sicherheit', 'Status']],
+        ['title' => 'Produkt',     'links' => ['Für Praxen', 'So funktioniert es', 'Anamnese-Bereiche', 'Preise · folgt', 'Demo vereinbaren']],
+        ['title' => 'Vertrauen',   'links' => ['Datenschutz (DSGVO)', 'AVV abrufen', 'Dienstleister mit Datenzugriff', 'Sicherheit', 'Status']],
         ['title' => 'Unternehmen', 'links' => ['Über Audania', 'Build-in-Public', 'Presse', 'Kontakt', 'Impressum']],
     ];
     $hrefs = [
-        'Sicherheit' => route('marketing.home') . '#vertrauen',
+        'Für Praxen' => $home . '#top',
+        'So funktioniert es' => $home . '#how',
+        'Anamnese-Bereiche' => $home . '#anatomy',
+        'Demo vereinbaren' => $home . '#demo',
+        'Sicherheit' => $home . '#vertrauen',
         'Datenschutz (DSGVO)' => route('marketing.datenschutz'),
         'Impressum' => route('marketing.impressum'),
+        'Über Audania' => route('marketing.journeys'),
+        'Kontakt' => 'mailto:info@audania.de',
+        'Preise · folgt' => null,
     ];
     $year = date('Y');
 @endphp
@@ -22,7 +30,7 @@
             <div class="marketing-footer__meta">
                 <span class="caption">Mike Esser Trading &amp; Consulting · Bonn</span>
                 <span class="caption">Hosting: Hetzner Frankfurt (FRA1)</span>
-                <span class="caption">LLM-Inferenz: Mistral EU · Azure OpenAI Sweden</span>
+                <span class="caption">EU-Sprachmodell · keine Trainingsnutzung</span>
             </div>
         </div>
 
@@ -31,7 +39,14 @@
                 <span class="eyebrow">{{ $col['title'] }}</span>
                 <ul>
                     @foreach ($col['links'] as $link)
-                        <li><a href="{{ $hrefs[$link] ?? '#' }}">{{ $link }}</a></li>
+                        @php($href = array_key_exists($link, $hrefs) ? $hrefs[$link] : '#')
+                        <li>
+                            @if ($href === null)
+                                <span class="is-disabled" aria-disabled="true">{{ $link }}</span>
+                            @else
+                                <a href="{{ $href }}">{{ $link }}</a>
+                            @endif
+                        </li>
                     @endforeach
                 </ul>
             </div>

@@ -6,20 +6,20 @@
     ];
 @endphp
 
-<section class="marketing-anatomy" data-screen-label="03 Worte und Befund">
+<section id="anatomy" class="marketing-anatomy" data-screen-label="03 Worte und Befund">
     <div class="marketing-anatomy__inner">
         <div class="section-head">
             <div>
                 <span class="eyebrow">Worte und Befund</span>
                 <h2 class="h1 section-head__title section-head__title--smaller">
-                    Die Worte der Patient:in. Sortiert für Ihr PVS.
+                    Die Worte der Patient:in. Sortiert für Ihre Praxissoftware.
                 </h2>
             </div>
             <p class="section-head__lede section-head__lede--narrow">
                 Audania hält fest, was die Patient:in gesagt hat — wortgenau,
                 nicht paraphrasiert. Gleichzeitig sortiert sie die Antworten
                 nach Anliegen, Verlauf, Charakter und Intensität, damit der Befund
-                in Ihrem PVS lesbar ankommt.
+                in Ihrer Praxissoftware lesbar ankommt.
             </p>
         </div>
 
@@ -55,7 +55,7 @@
 
             <div class="anatomy-card">
                 <div class="anatomy-card__head">
-                    <span class="anatomy-card__caption">Anamnese-Befund · in Ihrem PVS</span>
+                    <span class="anatomy-card__caption">Anamnese-Befund · in Ihrer Praxissoftware</span>
                     <span class="badge-neutral">medatixx</span>
                 </div>
 
@@ -81,7 +81,7 @@
 
                 <div class="anatomy-card__footer-pill">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-note-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Übergeben an Ihr PVS · vor dem Aufruf ins Sprechzimmer
+                    Übergeben an Ihre Praxissoftware · vor dem Aufruf ins Sprechzimmer
                 </div>
             </div>
         </div>

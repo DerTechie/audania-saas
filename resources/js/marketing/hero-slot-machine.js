@@ -155,7 +155,7 @@ function renderBefund() {
             </div>
             <div class="befund-footer">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-note-ink)" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Der Befund liegt in Ihrem PVS, bevor die Patient:in ins Sprechzimmer kommt.
+                Der Befund liegt in Ihrer Praxissoftware, bevor die Patient:in ins Sprechzimmer kommt.
             </div>
         </div>
     `;
@@ -165,7 +165,7 @@ function renderRibbon(showBefund) {
     return `
         <span class="ribbon-status">
             <span class="ribbon-dot"></span>
-            ${showBefund ? 'Befund an PVS übergeben' : 'Automatisch gespeichert · EU-Hosting'}
+            ${showBefund ? 'Befund an Ihre Praxissoftware übergeben' : 'Automatisch gespeichert · EU-Hosting'}
         </span>
         <span class="ribbon-aside">Keine Diagnose.</span>
     `;

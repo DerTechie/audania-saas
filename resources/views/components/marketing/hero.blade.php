@@ -1,8 +1,8 @@
 @php
     $pillars = [
-        ['DSGVO-konform', 'Hosting in Frankfurt am Main'],
-        ['PVS-neutral', 'medatixx · CGM Albis · RED · t2med'],
-        ['Kein Medizinprodukt', 'MDR-by-design'],
+        ['Datenschutz', 'Hosting in Frankfurt am Main · AVV vor dem Pilot'],
+        ['Ihre Praxissoftware bleibt', 'medatixx · CGM Albis · Turbomed · Medistar'],
+        ['Bewusst kein Diagnose-Tool', 'Audania stellt keine Diagnosen'],
     ];
 @endphp
 
@@ -11,13 +11,15 @@
         <span class="eyebrow">Für deutsche Arztpraxen · Stand Mai 2026</span>
 
         <h1 class="display marketing-hero__title">
-            Wir hören zu, bevor der Arzt fragt.
+            Die Anamnese ist fertig, ehe Sie den Patienten aufrufen.
         </h1>
 
         <p class="marketing-hero__lede">
-            Audania ist der KI-native Anamnese-Assistent für deutsche Arztpraxen —
-            gesprächsbasiert, datenschutzkonform, und bewusst kein Medizinprodukt.
-            Die strukturierte Anamnese liegt im PVS, ehe der Patient ins Sprechzimmer gerufen wird.
+            Audania führt das Anamnese-Gespräch mit Ihren Patient:innen — auf einem
+            Tablet im Wartezimmer oder über ihr eigenes Telefon, in zehn Sprachen.
+            Der strukturierte Befund liegt vor dem Gespräch in Ihrer Praxissoftware.
+            Bewusst kein Medizinprodukt: Audania stellt keine Diagnosen.
+            Die Entscheidung bleibt bei Ihnen.
         </p>
 
         <div class="marketing-hero__cta-row">

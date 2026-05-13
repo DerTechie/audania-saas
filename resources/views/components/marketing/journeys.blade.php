@@ -1,6 +1,6 @@
 <section class="tj-intro" id="top">
     <div>
-        <span class="eyebrow">Architektur · Drei Patientenpfade</span>
+        <span class="eyebrow">Architektur · Wie Audania denkt</span>
         <h1 class="tj-intro__title">Wie Audania denkt.</h1>
     </div>
     <p class="tj-intro__lede">
@@ -34,15 +34,15 @@
     @php
         $does = [
             'Liest Patient:innen-Eingaben in jeder unterstützten Sprache.',
-            'Gibt eine strukturierte Slot-Patch gegen ein festes Schema zurück.',
+            'Gibt eine strukturierte Datenmenge gegen ein festes Schema zurück.',
             'Liefert zu jedem Wert ein Belegzitat — auditierbar.',
-            'Parst lockeren Text in Zeitleisten, Mengen, Listen.',
+            'Wandelt formlosen Text in Zeitleisten, Mengen, Listen um.',
         ];
         $doesnt = [
             'Wählt nicht die nächste Frage. Das macht die Policy.',
-            'Schreibt keine Antwort an die Patient:in. Das macht die Template-Bibliothek.',
-            'Definiert keine Slots. Die liegen in der Versionierung.',
-            'Diagnostiziert nicht, triagiert nicht, empfiehlt keine Handlung — der Slot existiert nicht.',
+            'Schreibt keine Antwort an die Patient:in. Das übernimmt eine feste Vorlagen-Sammlung.',
+            'Definiert keine Fragen. Die liegen in der Versions-Kontrolle.',
+            'Diagnostiziert nicht, triagiert nicht, empfiehlt keine Handlung — diese Funktion existiert nicht.',
         ];
     @endphp
 

@@ -5,7 +5,7 @@
         'Keine Telefonakquise, keine Newsletter — nur die Demo.',
     ];
 
-    $pvsOptions = ['medatixx', 'CGM Albis', 'Turbomed', 'RED', 't2med', 'Anderes'];
+    $pvsOptions = ['medatixx', 'CGM Albis', 'Turbomed', 'Medistar', 'RED', 't2med', 'Andere'];
 @endphp
 
 <section id="demo" class="marketing-cta" data-screen-label="06 Demo">
@@ -15,9 +15,9 @@
             30 Minuten, in Ihrer Praxis.
         </h2>
         <p class="section-head__lede" style="max-width: 480px;">
-            Wir kommen vorbei oder rufen an. Sie sehen Audania an einem realen
-            Slot-Set Ihrer Fachrichtung — und erhalten den AVV-Entwurf vorab,
-            ohne dass Sie etwas unterschreiben.
+            Wir kommen vorbei oder rufen an. Sie sehen Audania an einem echten
+            Anamnese-Beispiel aus Ihrer Fachrichtung — und erhalten den AVV-Entwurf
+            vorab, ohne dass Sie etwas unterschreiben.
         </p>
 
         <ul class="cta-list">
@@ -49,7 +49,7 @@
         </label>
 
         <div class="cta-field" data-cta-pvs>
-            <span class="caption">PVS</span>
+            <span class="caption">Praxissoftware</span>
             <div class="cta-pvs">
                 @foreach ($pvsOptions as $i => $option)
                     <button
