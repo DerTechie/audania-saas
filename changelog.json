@@ -2,7 +2,7 @@
   "version": 1,
   "name": "audania-saas Changelog",
   "source": "audania-saas",
-  "updated": "2026-05-13",
+  "updated": "2026-05-15",
   "notes": [
     "Per-repo changelog for the audania-saas Laravel app. Schema mirrors the project-root changelog (../../changelog.json).",
     "The project-root changelog.html merges this file's entries into the unified timeline at render time, tagged with source='audania-saas'.",
@@ -11,6 +11,29 @@
     "related_project links back to a project-level changelog entry id when the same event has both a strategic decision (project) and a code implementation (repo) — e.g., 2026-05-11 entity decision ↔ Impressum commit."
   ],
   "entries": [
+    {
+      "id": "b9f3bf3",
+      "commit": "b9f3bf3",
+      "date": "2026-05-15",
+      "source": "audania-saas",
+      "category": "code",
+      "type": "changed",
+      "title": "chore(changelog): backfill related_project on 3 pre-convention commits",
+      "summary": "Three audania-saas commits never had a Changelog-Related-Project trailer because they predate the trailer convention introduced on 2026-05-13, even though their relationship to a parent project-decision entry is clear from each commit body:",
+      "files": [
+        "changelog.json"
+      ],
+      "tags": [
+        "changelog",
+        "cross-links",
+        "backfill",
+        "housekeeping"
+      ],
+      "public": false,
+      "effort_minutes": 15,
+      "effort_source": "tracked",
+      "related_project": "2026-05-13-changelog-crosslinks-backfilled"
+    },
     {
       "id": "9cea1fa",
       "commit": "9cea1fa",
