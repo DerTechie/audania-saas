@@ -1,0 +1,23 @@
+# .github/workflows/dispatch-changelog.yml
+name: Dispatch changelog sync to parent
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send repository_dispatch to DerTechie/audania
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TO_PARENT_TOKEN }}
+          repository: DerTechie/audania
+          event-type: changelog-sync
+          client-payload: |
+            {
+              "repo": "audania-saas",
+              "sha": "${{ github.sha }}",
+              "branch": "${{ github.ref_name }}"
+            }

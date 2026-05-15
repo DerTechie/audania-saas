@@ -39,3 +39,7 @@ Thumbs.db
 
 # Claude Code local user settings (per-developer permissions, not project state).
 /.claude/settings.local.json
+
+# Per-repo changelog.json was retired 2026-05-15 (AUD-009 migration).
+# Parent monorepo reads our git log directly via CI.
+changelog.json
