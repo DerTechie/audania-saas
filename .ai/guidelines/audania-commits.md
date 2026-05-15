@@ -14,10 +14,10 @@ Every commit body ends with a Conventional Commit subject **and** a block of `Ch
 <body — what changed and why, free prose>
 
                                        ← blank line before trailers
+Task: AUD-NNN
 Changelog-Effort: <duration>
 Changelog-Public: true|false
 Changelog-Tags: <tag1>, <tag2>, <tag3>
-Changelog-Related-Project: <project-entry-id>
 Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 ```
 
@@ -26,6 +26,16 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 ---
 
 ## Required trailers
+
+### `Task: AUD-NNN`
+
+Every commit must carry a `Task:` trailer pointing at an open task in `../../tasks/` (parent monorepo). The trailer is what the changelog renderer uses to group entries across repos. See `../../tasks/README.md` for the full convention.
+
+If no existing task fits and the work is housekeeping (typo, dep bump, small lint tweak), use `Task: AUD-000` — the permanent umbrella. If the work is substantive and no task exists, **stop and ask Mike to create one** via `python3 scripts/task.py new "<title>"` in the parent before continuing.
+
+The script's parser accepts `AUD-` followed by 1+ digits (`AUD-1`, `AUD-007`, `AUD-1234`). Convention zero-pads to 3 digits.
+
+Sets the entry's `task_id` field.
 
 ### `Changelog-Effort: <duration>`
 
@@ -64,13 +74,9 @@ Examples: `claude-design`, `copy`, `praxis-register`, `legal`, `dsgvo`, `impress
 
 Aim for 2–4 tags. They drive the search/filter chips in `changelog.html`; too many tags = no signal.
 
-### `Changelog-Related-Project: <project-entry-id>`
+### `Changelog-Related-Project: <project-entry-id>` (deprecated)
 
-If the commit *implements* a decision recorded as a project-level changelog entry (root `changelog.json`), point at that entry by its `id`. The script reads this trailer and **also** writes the commit hash into the project entry's `related[]` array — so the cross-link is bidirectional after the next sync.
-
-Project entry ids use the convention `YYYY-MM-DD-slug` (e.g., `2026-05-13-first-cd-brief-marketing`, `2026-05-11-operating-entity-defined`). Find them by scrolling root `changelog.json` or filtering `changelog.html` by Source=Project.
-
-Omit the trailer entirely when the commit isn't tied to a specific project entry (most fix/refactor commits, internal plumbing, etc.).
+Historically used to link a commit to a project-level changelog entry by id. **Superseded by `Task: AUD-NNN`** (2026-05-15 migration). The trailer is still parsed by `scripts/changelog.py` for backward compatibility with pre-migration entries, but new commits should leave it out entirely — the `Task:` trailer carries the cross-repo grouping.
 
 ---
 
@@ -97,10 +103,10 @@ Datenresidenz / MDR-by-design / Health-Fintech removed from
 Praxis-facing copy. 13 files touched across hero, how, anatomy,
 compliance, vs, cta, footer, journeys.
 
+Task: AUD-005
 Changelog-Effort: 2h
 Changelog-Public: true
 Changelog-Tags: claude-design, copy, praxis-register
-Changelog-Related-Project: 2026-05-13-first-cd-brief-marketing
 Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 ```
 
@@ -117,6 +123,7 @@ resources/fonts/ and use relative URLs in @font-face so Vite serves
 them in dev and emits fingerprinted copies under /build/assets/ in
 prod. DSGVO posture unchanged: fonts remain self-hosted.
 
+Task: AUD-000
 Changelog-Effort: 30m
 Changelog-Public: false
 Changelog-Tags: vite, asset-pipeline, dsgvo
@@ -137,10 +144,10 @@ See parent monorepo CLAUDE.md §9 (2026-05-11 entry) for the
 canonical decision; this file is the engineering-side mirror per the
 Boost extension model.
 
+Task: AUD-004
 Changelog-Effort: 20m
 Changelog-Public: false
 Changelog-Tags: ai-guidelines, entity, boost
-Changelog-Related-Project: 2026-05-11-operating-entity-defined
 Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 ```
 
@@ -150,6 +157,7 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 
 The script falls back to conservative defaults:
 
+- No `Task:` → `task_id: null` (entry renders under "Untagged" in the timeline; CI does not reject the commit). Recover by adding the commit's short SHA to the appropriate task file's `Manual entries:` section.
 - No `Changelog-Effort` → `effort_minutes: null`, `effort_source: "unknown"` (entry needs manual fill-in later).
 - No `Changelog-Public` → `public: false` (safe default; Mike can flip).
 - No `Changelog-Tags` → only the CC scope ends up as a tag.

@@ -12,6 +12,23 @@
   ],
   "entries": [
     {
+      "id": "ff84002",
+      "commit": "ff84002",
+      "date": "2026-05-15",
+      "source": "audania-saas",
+      "category": "code",
+      "type": "changed",
+      "title": "chore: sync changelog (post-commit hook rollup)",
+      "summary": "Adds the b9f3bf3 backfill commit to the per-repo changelog.",
+      "files": [
+        "changelog.json"
+      ],
+      "tags": [],
+      "public": false,
+      "effort_minutes": null,
+      "effort_source": "unknown"
+    },
+    {
       "id": "b9f3bf3",
       "commit": "b9f3bf3",
       "date": "2026-05-15",
