@@ -97,6 +97,28 @@
       "related_project": "2026-05-13-changelog-sync-script"
     },
     {
+      "id": "3453634",
+      "commit": "3453634",
+      "date": "2026-05-13",
+      "source": "audania-saas",
+      "category": "code",
+      "type": "changed",
+      "title": "chore: sync changelog (post-commit hook rollup)",
+      "summary": "Folds the post-commit hook's auto-generated changelog.json entry for the previous README rewrite commit (040da5f) into history. The hook adds new entries after each commit but leaves them as a dirty working-tree change; this commit captures that state so the repo isn't permanently ahead of its own changelog file.",
+      "files": [
+        "changelog.json"
+      ],
+      "tags": [
+        "changelog",
+        "sync",
+        "housekeeping"
+      ],
+      "public": false,
+      "effort_minutes": null,
+      "effort_source": "unknown",
+      "related_project": "2026-05-13-changelog-trailer-automation"
+    },
+    {
       "id": "040da5f",
       "commit": "040da5f",
       "date": "2026-05-13",
@@ -330,7 +352,8 @@
       ],
       "public": true,
       "effort_minutes": 240,
-      "effort_source": "estimate"
+      "effort_source": "estimate",
+      "related_project": "2026-05-09-marketing-as-route-group"
     },
     {
       "id": "844ec37",
@@ -383,7 +406,8 @@
       ],
       "public": true,
       "effort_minutes": 45,
-      "effort_source": "estimate"
+      "effort_source": "estimate",
+      "related_project": "2026-05-09-stack-laravel-13-livewire-vue"
     }
   ]
 }
